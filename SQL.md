@@ -13,7 +13,7 @@ Foreign Key: A foreign key is a column (or set of columns) in one table that ref
 Constraints: Constraints are rules that enforce data integrity in a database. They can be used to specify data types, primary keys, foreign keys, and other rules.
 
 
-query
+#query
 CREATE TABLE Customers (
   customer_id INT PRIMARY KEY,
   customer_name VARCHAR(255) NOT NULL,
@@ -35,7 +35,7 @@ CREATE DATABASE:  This command is used to create a new database.
 
 CREATE TABLE: This command is used to create a new table within a database. You can specify the columns of the table and their data types.
 
-query
+#query
 CREATE DATABASE my_database;
 
 USE my_database;
@@ -58,7 +58,7 @@ DELETE: This command is used to remove rows of data from a table.
 ALTER TABLE: This command allows you to modify the structure of an existing table. You can add, remove, or modify columns.
 
 
-query
+#query
 INSERT INTO Products (product_name, price, stock)
 VALUES ('T-Shirt', 19.99, 100),
        ('Laptop', 799.99, 25);
@@ -75,7 +75,7 @@ SELECT: This is the fundamental command for retrieving data from a database. You
 
 WHERE Clause: The WHERE clause allows you to filter the results of your SELECT statement based on specific conditions.
 
-query
+#query
 SELECT * FROM Products;  -- Select all columns from the Products table
 
 SELECT product_name, price FROM Products WHERE price > 50;  -- Select products with price greater than 50
@@ -90,7 +90,7 @@ The method for importing data from a CSV file to SQL will vary depending on the 
 
 SQL offers a variety of built-in functions that can be used to perform calculations, manipulate data, and format text. String functions are a specific type of function that allows you to work with text data.
 
-query
+#query
 SELECT product_name, UPPER(product_name) AS uppercase_name FROM Products;  -- Convert product names to uppercase
 
 SELECT customer_name, LEFT(email, 10) AS email_prefix FROM Customers; -- Extract the first 10 characters from email addresses
@@ -105,7 +105,7 @@ GROUP BY: The GROUP BY clause is used in conjunction with aggregate functions to
 
 HAVING Clause: The HAVING clause is similar to the WHERE clause but is used to filter groups of data after the GROUP BY clause has been applied.
 
-query
+#query
 SELECT category, COUNT(*) AS product_count FROM Products
 GROUP BY category;  -- Count products by category
 
@@ -127,7 +127,7 @@ Date/Time Functions: SQL provides various functions to work with date and time d
 
 EXTRACT Function: The EXTRACT function is used to extract specific parts (year, month, day, etc.) from a timestamp or date/time value.
 
-query
+#query
 SELECT * FROM Orders WHERE order_date >= CURDATE() - INTERVAL 30 DAY; -- Find orders from the last 30 days
 
 SELECT order_date, EXTRACT(YEAR FROM order_date) AS order_year, EXTRACT(MONTH FROM order_date) AS order_month
@@ -147,7 +147,7 @@ RIGHT JOIN: Returns all rows from the right table and matching rows from the lef
 
 FULL JOIN: Returns all rows from both tables, including unmatched rows with null values in the non-matching columns.
 
-query
+#query
 SELECT Customers.customer_name, Orders.order_date, Orders.order_total
 FROM Customers
 INNER JOIN Orders ON Customers.customer_id = Orders.customer_id;  -- Get customer names and order details
@@ -162,7 +162,7 @@ UNION: Combines the results of two or more SELECT statements into a single resul
 
 UNION ALL: Combines the results of two or more SELECT statements into a single result set, including duplicate rows.
 
-query
+#query
 SELECT product_name FROM Products WHERE category = 'electronics'
 UNION
 SELECT product_name FROM Products WHERE category = 'clothing';  -- Combine products from two categories (excluding duplicates)
@@ -175,7 +175,7 @@ SELECT * FROM Employees;  -- Combine all data from Customers and Employees table
 
 A subquery is a SELECT statement nested within another SELECT statement. It allows you to retrieve data based on the results of another query.
 
-query
+#query
 SELECT customer_name, order_date
 FROM Customers
 WHERE customer_id IN (
